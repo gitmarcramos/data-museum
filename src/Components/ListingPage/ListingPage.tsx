@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 import Tile, { LoadingTile } from "../Tile/Tile";
-import { DATA_TYPE, ListingPageProps, StyledListingPageProps } from "./types";
 import { useAtom, useAtomValue } from "jotai";
 import {
   detailsAtom,
@@ -12,35 +10,10 @@ import {
 import Modal from "../Modal/Modal";
 import Button from "../Button/Button";
 import { ModalData } from "../Modal/types";
+import { StyledListingPage, ResultsString, List } from "./styles";
+import { DATA_TYPE, ListingPageProps } from "./types";
 
-const StyledListingPage = styled.div<StyledListingPageProps>`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: center;
-`;
 
-const ResultsString = styled.div`
-  height: 3vh;
-  font-size: clamp(12px, 2vw, 16px);
-`;
-
-const List = styled.div`
-  width: 100%;
-  display: grid;
-  grid-gap: 8px;
-  grid-template-columns: repeat(2, 1fr);
-  overflow: hidden;
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (min-width: 1480px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-`;
 
 const ListingPage = ({ className }: ListingPageProps) => {
   const [data, setData] = useState<DATA_TYPE[]>([]);
@@ -54,6 +27,8 @@ const ListingPage = ({ className }: ListingPageProps) => {
     setVisibleItems((value) => value + 12);
   };
 
+
+  //TODO: extract this fetch inside a custom hook
   useEffect(() => {
     const URL = `https://www.rijksmuseum.nl/api/nl/collection?key=${import.meta.env.VITE_KEY}&ps=${itemsPerPage}&q=${query}`;
     {
