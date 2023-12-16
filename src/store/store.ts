@@ -1,5 +1,5 @@
 import { atom } from "jotai";
-import { ModalData } from "../Components/Modal/Modal";
+import { ModalData } from "../Components/Modal/types";
 
 export const itemsPerPageAtom = atom(20);
 export const visibleItemsAtom = atom(12);

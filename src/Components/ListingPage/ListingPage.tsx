@@ -9,8 +9,9 @@ import {
   searchQueryAtom,
   visibleItemsAtom,
 } from "../../store/store";
-import Modal, { ModalData } from "../Modal/Modal";
+import Modal from "../Modal/Modal";
 import Button from "../Button/Button";
+import { ModalData } from "../Modal/types";
 
 const StyledListingPage = styled.div<StyledListingPageProps>`
   width: 100%;
@@ -54,9 +55,7 @@ const ListingPage = ({ className }: ListingPageProps) => {
   };
 
   useEffect(() => {
-    const URL = `https://www.rijksmuseum.nl/api/nl/collection?key=${
-      import.meta.env.VITE_KEY
-    }&ps=${itemsPerPage}&q=${query}`;
+    const URL = `https://www.rijksmuseum.nl/api/nl/collection?key=${import.meta.env.VITE_KEY}&ps=${itemsPerPage}&q=${query}`;
     {
       (async () => {
         try {

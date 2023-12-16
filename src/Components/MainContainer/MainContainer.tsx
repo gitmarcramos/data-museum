@@ -1,10 +1,5 @@
-import { ReactNode } from "react";
 import styled from "styled-components";
-
-type StyledMainContainerProps = {
-  className?: string;
-  children?: ReactNode;
-};
+import { StyledMainContainerProps } from "./types";
 
 const StyledMainContainer = styled.main`
   padding-top: 12vh;

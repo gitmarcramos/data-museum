@@ -1,35 +1,6 @@
-import { ButtonHTMLAttributes } from "react";
 import styled, { css } from "styled-components";
-
-type ButtonProps = {
-  children: string;
-  onClick?: () => void;
-} & StyledButtonProps &
-  Pick<ButtonHTMLAttributes<HTMLButtonElement>, "type">;
-
-type StyledButtonProps = {
-  className?: string;
-  $emphasis: "primary" | "secondary";
-};
-
-const applyButtonStyles = (emphasis: StyledButtonProps["$emphasis"]) => {
-  if (emphasis === "primary") {
-    return css`
-      background-color: var(--primary);
-      border: 1px solid var(--primary);
-      &:hover {
-        background-color: var(--primaryDarker);
-        border: 1px solid var(--primaryDarker);
-      }
-    `;
-  } else {
-    return css`
-      background-color: transparent;
-      color: var(--primary);
-      border: none;
-    `;
-  }
-};
+import { applyButtonStyles } from "./utils";
+import { ButtonProps, StyledButtonProps } from "./types";
 
 const StyledButton = styled.button<StyledButtonProps>`
   color: var(--offWhite);
